@@ -39,3 +39,7 @@ GTAGS
 # Binary and Object directory
 bin
 objs
+
+# Auto complete clang
+.clang.inc
+

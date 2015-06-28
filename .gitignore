@@ -35,3 +35,8 @@
 GPATH
 GRTAGS
 GTAGS 
+
+# Binary and Object directory
+bin
+objs
+

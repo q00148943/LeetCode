@@ -142,19 +142,18 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2)
 		return l1;
 	}
 
-	/* struct ListNode *h; */
-	struct ListNode *c1 = l1;
-	struct ListNode *c2 = l2;
+	struct ListNode* head = l2;
+	struct ListNode* node;
 
 	do
 	{
-		if (c1->val < c2->val) {
-			
-		}
+		node = l1;
+		l1 = l1->next;
 
-	} while (0);
+		
+	} while (l1 != NULL);
 
-	return c1;
+	return head;
 }
 
 struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB)

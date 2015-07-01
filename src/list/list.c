@@ -142,16 +142,38 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2)
 		return l1;
 	}
 
-	struct ListNode* head = l2;
-	struct ListNode* node;
+	struct ListNode *head;
+	struct ListNode *c;
 
-	do
-	{
-		node = l1;
+	if (l1->val > l2->val) {
+		head = l2;
+		l2 = l2->next;
+	}
+	else {
+		head = l1;
 		l1 = l1->next;
+	}
 
-		
-	} while (l1 != NULL);
+	c = head;
+	while ((l1 != NULL) && (l2 != NULL)) {
+		if ((l1->val) > l2->val) {
+			c->next = l2;
+			l2 = l2->next;
+			c = c->next;
+		}
+		else {
+			c->next = l1;
+			l1 = l1->next;
+			c = c->next;
+		}
+	}
+
+	if (l1 == NULL) {
+		c->next = l2;
+	}
+	else {
+		c->next = l1;
+	}
 
 	return head;
 }

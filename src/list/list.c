@@ -236,3 +236,77 @@ struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *he
 	return NULL;
 }
 
+struct ListNode* swapPairs(struct ListNode* head)
+{
+	if (head == NULL) {
+		return NULL;
+	}
+
+	struct ListNode h;
+	
+	h.next = head;
+	
+	struct ListNode *p = &h;
+	struct ListNode *c = p->next;
+	struct ListNode *n = c->next;
+
+
+	while (n != NULL) {
+		p->next = n;
+		c->next = n->next;
+		n->next = c;
+
+		p = c;
+		c = c->next;
+		if (c == NULL) {
+			break;
+		}
+		else {
+			n = c->next;
+		}
+	}
+
+	return h.next;
+}
+
+struct ListNode* rotateRight(struct ListNode* head, int k)
+{
+	if ((head == NULL) || (k == 0)) {
+		return head;
+	}
+
+	int n = 0;
+
+	struct ListNode *h;
+	
+	struct ListNode *node = head;
+	while (node != NULL) {
+		n++;
+		node = node->next;
+	}
+
+	k %= n;
+	if (k == 0) {
+		return head;
+	}
+
+	node = head;
+	
+	n -= k;
+	while (n != 1) {
+		node = node->next;
+		n--;
+	}
+
+	h = node->next;
+	node->next = NULL;
+
+	node = h;
+	while ((node->next != NULL)) {
+		node = node->next;
+	}
+
+	node->next = head;
+	return h;
+}
+

@@ -310,3 +310,56 @@ struct ListNode* rotateRight(struct ListNode* head, int k)
 	return h;
 }
 
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2)
+{
+	if (l1 == NULL) {
+		return l2;
+	}
+	else if (l2 == NULL) {
+		return l1;
+	}
+
+	struct ListNode *p1;
+	struct ListNode *p2;
+	struct ListNode *head = l1;
+
+	int sum;
+	int quotient = 0;	
+	while ((l1 != NULL) && (l2 != NULL)) {
+		sum = l1->val + l2->val;
+		l1->val = (sum + quotient)%10;
+		quotient = (sum + quotient)/10;
+
+		p1 = l1;
+		p2 = l2;
+		p2->val = quotient;
+		
+		l1 = l1->next;
+		l2 = l2->next;
+	}
+
+	if ((l1 == NULL) && (l2 == NULL)) {
+		if (0 != quotient) {
+			p1->next = p2;
+		}
+	}
+	if (l1 == NULL) {
+		if (0 != quotient) {
+			if (p2 != NULL) {
+				p2->next = NULL;
+				p1->next = addTwoNumbers(p2, l2);
+			}
+		}
+		else {
+			p1->next = l2;
+		}
+	}
+	else {
+		if (0 != quotient) {
+			p1->next = addTwoNumbers(p2, p1->next);
+		}
+	}
+
+	return head;
+}
+

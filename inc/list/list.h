@@ -14,6 +14,7 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2);
 struct ListNode* getIntersectionNode(struct ListNode *headA, struct ListNode *headB);
 struct ListNode* swapPairs(struct ListNode* head);
 struct ListNode* rotateRight(struct ListNode* head, int k);
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 
 // assistant function
 void printList(struct ListNode* head);

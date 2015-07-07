@@ -363,3 +363,75 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2)
 	return head;
 }
 
+struct ListNode* insertionSortList(struct ListNode* head)
+{
+	if (head == NULL) {
+		return NULL;
+	}
+
+
+	struct ListNode *p;	
+	struct ListNode *c;
+	struct ListNode *t;
+	struct ListNode *n = head->next;
+	struct ListNode node;
+	
+	head->next = NULL;
+	node.next = head;
+
+	while (n != NULL) {
+		p = &node;
+		c = p->next;
+		while (c != NULL) {
+			if (c->val >= n->val) {
+				break;
+			}
+			else {
+				p = c;
+				c = c->next;
+			}
+		}
+
+		p->next = n;
+		t = n->next;
+		
+		if (c == NULL) {
+			n->next = NULL;
+		}
+		else {
+			n->next = c;
+		}
+
+		n = t;
+	}
+
+	return node.next;
+}
+
+void reorderList(struct ListNode* head)
+{
+	if (head == NULL) {
+		return;
+	}
+
+	int elem_num = 0;
+	
+	struct ListNode *node = head;
+	while (node != NULL) {
+		elem_num++;
+		node = node->next;
+	}
+
+	elem_num = (elem_num + 2 - 1)/2;
+
+	node = head;
+	while ((elem_num--) != 0) {
+		node = node->next;
+	}
+
+	/* struct ListNode *second = node->next; */
+	node->next = NULL;
+
+	return;
+}
+

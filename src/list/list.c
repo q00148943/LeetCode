@@ -425,13 +425,62 @@ void reorderList(struct ListNode* head)
 	elem_num = (elem_num + 2 - 1)/2;
 
 	node = head;
-	while ((elem_num--) != 0) {
+	while ((--elem_num) != 0) {
 		node = node->next;
 	}
 
-	/* struct ListNode *second = node->next; */
+	struct ListNode *s = node->next;
 	node->next = NULL;
+	if (s == NULL) {
+		return;
+	}
 
+	struct ListNode *t;
+	struct ListNode *c = s->next;
+	s->next = NULL;
+
+	while (c != NULL) {
+		t = c->next;
+		c->next = s;
+		s = c;
+		c = t;
+	}
+
+	node = head;
+	while (s != NULL) {
+		t = s->next;
+		s->next = node->next;
+		node->next = s;
+		node = s->next;
+		s = t;
+	}
+	
 	return;
+}
+
+struct ListNode* reverseBetween(struct ListNode* head, int m, int n)
+{
+	if (head == NULL) {
+		return NULL;
+	}
+
+	struct ListNode h;
+	struct ListNode *c = head;
+	struct ListNode *p = &h;
+	struct ListNode *t;
+	
+	h.next = head;
+
+	while ((--m) != 0) {
+		p = c;
+		c = c->next;
+		n--;
+	}
+
+	while ((--n) != 0) {
+		t = c->next;
+	}
+	
+	return h.next;
 }
 

@@ -6,6 +6,8 @@ struct ListNode {
 	struct ListNode *next;
 };
 
+void reorderList(struct ListNode* head);
+
 struct ListNode* reverseList(struct ListNode* head);
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
 struct ListNode* removeElements(struct ListNode* head, int val);
@@ -16,7 +18,7 @@ struct ListNode* swapPairs(struct ListNode* head);
 struct ListNode* rotateRight(struct ListNode* head, int k);
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 struct ListNode* insertionSortList(struct ListNode* head);
-void reorderList(struct ListNode* head);
+struct ListNode* reverseBetween(struct ListNode* head, int m, int n);
 
 
 // assistant function

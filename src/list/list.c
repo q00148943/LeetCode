@@ -2,6 +2,10 @@
 
 #include "list.h"
 
+#define true 1
+#define false 0
+
+
 void printList(struct ListNode* head)
 {
 	if (head == NULL) {
@@ -458,29 +462,128 @@ void reorderList(struct ListNode* head)
 	return;
 }
 
-struct ListNode* reverseBetween(struct ListNode* head, int m, int n)
+struct ListNode* reverseBetween(struct ListNode* head, int b, int e)
 {
 	if (head == NULL) {
 		return NULL;
 	}
 
-	struct ListNode h;
-	struct ListNode *c = head;
-	struct ListNode *p = &h;
-	struct ListNode *t;
+	struct ListNode *h;
+	struct ListNode *c;
+	struct ListNode *n;
 	
+	struct ListNode node;
+	node.next = head;
+
+	h = &node;
+	c = head;
+	n = c->next;
+
+	int count = 1;
+	while ((n != NULL) && (count <= e)) {
+		if (b <= count) {
+			c->next = n->next;
+			n->next = h->next;
+			h->next = n;
+			n = c->next;
+		}
+		else {
+			h = c;
+			c = n;
+			n = n->next;
+		}
+
+		count++;
+	}
+
+	return node.next;
+}
+
+struct ListNode* deleteDuplicates2(struct ListNode* head)
+{
+	if (head == NULL) {
+		return NULL;
+	}
+
+	struct ListNode *p;
+	struct ListNode *c;
+	
+	struct ListNode h;
+
 	h.next = head;
 
-	while ((--m) != 0) {
-		p = c;
-		c = c->next;
-		n--;
+	int deleted = 0;
+	
+	p = &h;
+	c = head;
+	while (c->next != NULL) {
+		if (c->val == c->next->val) {
+			p->next = c->next;
+			c = c->next;
+			deleted = 1;
+		}
+		else {
+			if (deleted == 1) {
+				p->next = c->next;
+				c = c->next;
+				deleted = 0;
+			}
+			else {
+				p = c;
+				c = c->next;
+			}
+		}
 	}
 
-	while ((--n) != 0) {
-		t = c->next;
+	if (deleted == 1) {
+		p->next = c->next;
+	}
+
+	return h.next;
+}
+
+int isPalindrome(struct ListNode* head)
+{
+	if (head == NULL) {
+		return false;
+	}
+
+	int nelem = 0;
+	
+	struct ListNode *c = head;
+	while (c != NULL) {
+		nelem++;
+		c = c->next;
+	}
+
+	int loop = nelem/2;
+	
+	c = head;
+
+	struct ListNode *h = NULL;
+	struct ListNode *n = NULL;
+
+	c = h = head;
+	n = c->next;
+	while ((--loop) != 0) {
+		c->next = n->next;
+		n->next = h;
+		h = n;
+		n = c->next;
+	}
+
+	loop = nelem/2;
+	c = head;
+	
+	while ((--loop) != 0) {
+		if (c->val != n->val) {
+			return false;
+		}
+
+		c = c->next;
+		n = n->next;
 	}
 	
-	return h.next;
+	return true;
 }
 

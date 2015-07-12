@@ -7,6 +7,7 @@ struct ListNode {
 };
 
 void reorderList(struct ListNode* head);
+int isPalindrome(struct ListNode* head);
 
 struct ListNode* reverseList(struct ListNode* head);
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
@@ -19,7 +20,7 @@ struct ListNode* rotateRight(struct ListNode* head, int k);
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 struct ListNode* insertionSortList(struct ListNode* head);
 struct ListNode* reverseBetween(struct ListNode* head, int m, int n);
-
+struct ListNode* deleteDuplicates2(struct ListNode* head);
 
 // assistant function
 void printList(struct ListNode* head);

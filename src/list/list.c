@@ -588,3 +588,18 @@ bool isPalindrome(struct ListNode* head)
 	return true;
 }
 
+void deleteNode(struct ListNode* node)
+{
+	if (node == NULL) {
+		return;
+	}
+
+	struct ListNode *n = node->next;
+	if (n != NULL) {
+		node->val = n->val;
+		node->next = n->next;
+	}
+
+	return;
+}
+

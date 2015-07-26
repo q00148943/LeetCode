@@ -12,6 +12,7 @@ struct ListNode {
 	struct ListNode *next;
 };
 
+void deleteNode(struct ListNode* node);
 void reorderList(struct ListNode* head);
 
 bool isPalindrome(struct ListNode* head);

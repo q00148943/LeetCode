@@ -2,10 +2,6 @@
 
 #include "list.h"
 
-#define true 1
-#define false 0
-
-
 void printList(struct ListNode* head)
 {
 	if (head == NULL) {
@@ -542,48 +538,53 @@ struct ListNode* deleteDuplicates2(struct ListNode* head)
 	return h.next;
 }
 
-int isPalindrome(struct ListNode* head)
+bool isPalindrome(struct ListNode* head)
 {
 	if (head == NULL) {
-		return false;
+		return true;
 	}
 
-	int nelem = 0;
-	
 	struct ListNode *c = head;
+
+	int nelem = 0;
+
+	/* count sum of the list element */
 	while (c != NULL) {
 		nelem++;
 		c = c->next;
 	}
 
-	int loop = nelem/2;
-	
+	int nelem_first_half = nelem/2;
+
 	c = head;
-
-	struct ListNode *h = NULL;
-	struct ListNode *n = NULL;
-
-	c = h = head;
-	n = c->next;
-	while ((--loop) != 0) {
+	
+	struct ListNode *h = head;	
+	struct ListNode *n = c->next;
+	
+	/* reverse the first half of the list */
+	while ((--nelem_first_half) > 0) {
 		c->next = n->next;
 		n->next = h;
 		h = n;
 		n = c->next;
 	}
 
-	loop = nelem/2;
-	c = head;
-	
-	while ((--loop) != 0) {
-		if (c->val != n->val) {
-			return false;
+	if (n != NULL) {
+		if ((nelem%2) == 1) {
+			n = n->next;
 		}
 
-		c = c->next;
-		n = n->next;
+		do
+			{
+				if (h->val != n->val) {
+					return false;
+				}
+
+				n = n->next;
+				h = h->next;
+			} while (n != NULL);
 	}
-	
+
 	return true;
 }
 

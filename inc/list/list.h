@@ -1,13 +1,19 @@
 #ifndef LIST_H
 #define LIST_H
 
+#define true 1
+#define false 0
+
+typedef int bool;
+
 struct ListNode {
 	int val;
 	struct ListNode *next;
 };
 
 void reorderList(struct ListNode* head);
-int isPalindrome(struct ListNode* head);
+
+bool isPalindrome(struct ListNode* head);
 
 struct ListNode* reverseList(struct ListNode* head);
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
@@ -21,6 +27,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 struct ListNode* insertionSortList(struct ListNode* head);
 struct ListNode* reverseBetween(struct ListNode* head, int m, int n);
 struct ListNode* deleteDuplicates2(struct ListNode* head);
+
 
 // assistant function
 void printList(struct ListNode* head);

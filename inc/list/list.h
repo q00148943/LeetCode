@@ -29,7 +29,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 struct ListNode* insertionSortList(struct ListNode* head);
 struct ListNode* reverseBetween(struct ListNode* head, int m, int n);
 struct ListNode* deleteDuplicates2(struct ListNode* head);
-
+struct ListNode* sortList(struct ListNode* head);
 
 // assistant function
 void printList(struct ListNode* head);

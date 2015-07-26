@@ -464,28 +464,32 @@ struct ListNode* reverseBetween(struct ListNode* head, int b, int e)
 		return NULL;
 	}
 
-	struct ListNode *h;
+	struct ListNode *p;
 	struct ListNode *c;
 	struct ListNode *n;
 	
 	struct ListNode node;
 	node.next = head;
 
-	h = &node;
+	p = &node;
 	c = head;
 	n = c->next;
 
 	int count = 1;
-	while ((n != NULL) && (count <= e)) {
-		if (b <= count) {
+	while (n != NULL) {
+		if (count >= b) {
+			if (count >= e) {
+				break;
+			}
+
 			c->next = n->next;
-			n->next = h->next;
-			h->next = n;
+			n->next = p->next;
+			p->next = n;
 			n = c->next;
 		}
 		else {
-			h = c;
-			c = n;
+			p = p->next;
+			c = c->next;
 			n = n->next;
 		}
 
@@ -601,5 +605,14 @@ void deleteNode(struct ListNode* node)
 	}
 
 	return;
+}
+
+struct ListNode* sortList(struct ListNode* head)
+{
+	if (head == NULL) {
+		return NULL;
+	}
+
+	return head;
 }
 

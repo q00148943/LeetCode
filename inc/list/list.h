@@ -31,7 +31,13 @@ struct ListNode* reverseBetween(struct ListNode* head, int m, int n);
 struct ListNode* deleteDuplicates2(struct ListNode* head);
 struct ListNode* sortList(struct ListNode* head);
 
-// assistant function
+/* #86	Partition List */
+struct ListNode* partition(struct ListNode* head, int x);
+
+/* #25	Reverse Nodes in k-Group */
+struct ListNode* reverseKGroup(struct ListNode* head, int k);
+
+/* assistant function */
 void printList(struct ListNode* head);
 
 

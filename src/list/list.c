@@ -616,3 +616,99 @@ struct ListNode* sortList(struct ListNode* head)
 	return head;
 }
 
+struct ListNode* partition(struct ListNode* head, int x)
+{
+	if (head == NULL) {
+		return NULL;
+	}
+
+	/* list of nodes whose value is equal or less then x */
+	struct ListNode a;
+	a.next = NULL;
+	
+	/* list of nodes whose value is larger then x */
+	struct ListNode b;
+	b.next = NULL;
+
+	struct ListNode *pa = &a;
+	struct ListNode *pb = &b;
+	
+	struct ListNode *node = head;
+	while (node != NULL) {
+		if (node->val < x) {
+			pa->next = node;
+			pa = pa->next;
+		}
+		else {
+			pb->next = node;
+			pb = pb->next;
+		}
+
+		node = node->next;
+	}
+
+	if (pa != NULL) {
+		pa->next = b.next;
+	}
+
+	if (pb != NULL) {
+		pb->next = NULL;
+	}
+
+	return a.next;
+}
+
+struct ListNode* reverseKGroup(struct ListNode* head, int k)
+{
+	if (head == NULL) {
+		return NULL;
+	}
+
+	int nelem = 0;
+
+	struct ListNode *p;
+	struct ListNode *n;
+	
+	struct ListNode *c = head;
+	while (c != NULL) {
+		nelem++;
+		c = c->next;
+	}
+
+	if ((k <= 1) || (k > nelem)) {
+		return head;
+	}
+
+	/* number of reverse times */
+	int nreverse = nelem/k;
+
+	/* number of reverse elements at a time*/
+	int nreverse_elems;
+
+	struct ListNode node;
+	node.next = head;
+
+	p = &node;
+	c = head;
+	n = head->next;
+	
+	while ((nreverse--) != 0) {
+		nreverse_elems = k;
+		while ((--nreverse_elems) != 0) {
+			c->next = n->next;
+			n->next = p->next;
+			p->next = n;
+			n = c->next;			
+		}
+
+		p = c;
+		c = n;
+		if (n != NULL) {
+			n = n->next;
+		}
+	}
+
+	return node.next;
+}
+
+

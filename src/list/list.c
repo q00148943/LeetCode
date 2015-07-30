@@ -712,3 +712,47 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k)
 }
 
 
+struct ListNode* mergeKLists(struct ListNode** lists, int listsSize)
+{
+	if (lists == NULL) {
+		return NULL;
+	}
+
+	struct ListNode head;
+	head.next = NULL;
+
+	int i;
+	for (i = 0; i < listsSize; i++) {
+		
+	}
+
+	return NULL;
+}
+
+bool hasCycle(struct ListNode *head)
+{
+	if (head == NULL) {
+		return false;
+	}
+
+	struct ListNode *node_s1 = head;
+	struct ListNode *node_s2 = head->next;
+
+	while ((node_s1 != NULL) && (node_s2 != NULL)) {
+		if (node_s1 == node_s2) {
+			return true;
+		}
+
+		node_s1 = node_s1->next;
+
+		if (node_s2->next != NULL) {
+			node_s2 = node_s2->next->next;
+		}
+		else {
+			return false;
+		}
+	}
+
+	return false;
+}
+

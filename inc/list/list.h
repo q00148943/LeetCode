@@ -63,6 +63,12 @@ struct ListNode* partition(struct ListNode* head, int x);
 /* #25	Reverse Nodes in k-Group */
 struct ListNode* reverseKGroup(struct ListNode* head, int k);
 
+/* #23	Merge k Sorted Lists */
+struct ListNode* mergeKLists(struct ListNode** lists, int listsSize);
+
+/* #141	Linked List Cycle */
+bool hasCycle(struct ListNode *head);
+
 /* assistant function */
 void printList(struct ListNode* head);
 

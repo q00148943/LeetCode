@@ -11,10 +11,30 @@ int main(int argc, char *argv[])
 	/* struct ListNode n5 = {5, NULL}; */
 	/* struct ListNode n4 = {4, NULL}; */
 	/* struct ListNode n3 = {3, &n4}; */
-	struct ListNode n2 = {2, NULL};
-	struct ListNode n1 = {1, &n2};
+	struct ListNode n1;
+	struct ListNode n2;
+	struct ListNode n3;
+	struct ListNode n4;
+	struct ListNode n5;
+	/* struct ListNode n6; */
+	/* struct ListNode n7; */
 
-	printList(reverseKGroup(&n1, 2));
+	n5.val = 5;
+	n5.next = &n2;
+	
+	n4.val = 4;
+	n4.next = &n5;
+	
+	n3.val = 3;
+	n3.next = &n4;
+	
+	n2.val = 2;
+	n2.next = &n3;
+	
+	n1.val = 1;
+	n1.next = &n2;
+
+	printf((true == hasCycle(&n1)) ? "true\n" : "false\n");
 
 	/* struct ListNode node50 = {5, NULL}; */
 	/* reorderList(&node50); */

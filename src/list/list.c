@@ -756,3 +756,25 @@ bool hasCycle(struct ListNode *head)
 	return false;
 }
 
+struct ListNode *detectCycle(struct ListNode *head)
+{
+	struct ListNode *node;
+	
+	while (head != NULL) {
+		if (true == hasCycle(head)) {
+			node = head->next;
+			head->next = NULL;
+			if (false == hasCycle(node)) {
+				return head;
+			}
+			else {
+				head = node;
+			}
+		}
+
+		head = head->next;
+	}
+
+	return NULL;
+}
+

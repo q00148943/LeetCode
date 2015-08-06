@@ -69,6 +69,9 @@ struct ListNode* mergeKLists(struct ListNode** lists, int listsSize);
 /* #141	Linked List Cycle */
 bool hasCycle(struct ListNode *head);
 
+/* 142	Linked List Cycle II */
+struct ListNode *detectCycle(struct ListNode *head);
+
 /* assistant function */
 void printList(struct ListNode* head);
 

@@ -160,3 +160,41 @@ void merge(int* nums1, int m, int* nums2, int n)
     return;
 }
 
+int majorityElement(int* nums, int numsSize)
+{
+    int temp;
+    for (int i = 1; i < numsSize; ++i)
+    {
+        for (int j = i; j > 0; --j)
+        {
+            if (nums[j] < nums[j-1])
+            {
+                temp = nums[j];
+                nums[j] = nums[j-1];
+                nums[j-1] = temp;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    int value = nums[0];
+    int nelem = 1;
+    
+    for (int i = 1; i < numsSize; i++) {
+        if (nums[i] == value) {
+            if ((++nelem) > numsSize/2) {
+                return value;
+            }
+        }
+        else {
+            value = nums[i];
+            nelem = 1;
+        }
+    }
+
+    return value;
+}
+

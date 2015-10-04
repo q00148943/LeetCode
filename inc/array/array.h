@@ -26,5 +26,8 @@ void moveZeroes(int* nums, int numsSize);
 
 /* #88 Merge Sorted Array */
 void merge(int* nums1, int m, int* nums2, int n);
+
+/* #169 Majority Element */
+int majorityElement(int* nums, int numsSize);
 #endif /* ARRAY_H */
 

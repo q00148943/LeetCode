@@ -183,3 +183,37 @@ int majorityElement(int* nums, int numsSize)
     return candidate;
 }
 
+bool containsDuplicate(int* nums, int numsSize)
+{
+    if (nums == NULL) {
+        return false;
+    }
+
+    for (int i = 0; i < numsSize - 1; i++) {
+        for (int j = numsSize - 1; j > i; j--) {
+            if (nums[i] == nums[j]) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+bool containsNearbyDuplicate(int* nums, int numsSize, int k)
+{
+    if (nums == NULL) {
+        return false;
+    }
+
+    for (int i = 0; i < numsSize - 1; i++) {
+        for (int j = numsSize - 1; j > i; j--) {
+            if ((nums[i] == nums[j]) && ((j - i) <= k)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+

@@ -31,5 +31,11 @@ void merge(int* nums1, int m, int* nums2, int n);
 
 /* #169 Majority Element */
 int majorityElement(int* nums, int numsSize);
+
+/* #217 Contains Duplicate */
+bool containsDuplicate(int* nums, int numsSize);
+
+/* #219 Contains Duplicate II*/
+bool containsNearbyDuplicate(int* nums, int numsSize, int k);
 #endif /* ARRAY_H */
 

@@ -23,5 +23,8 @@ int** generate(int numRows, int** columnSizes, int* returnSize);
 
 /* #283 Move Zeroes */
 void moveZeroes(int* nums, int numsSize);
+
+/* #88 Merge Sorted Array */
+void merge(int* nums1, int m, int* nums2, int n);
 #endif /* ARRAY_H */
 

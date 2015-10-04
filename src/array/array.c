@@ -125,3 +125,38 @@ void moveZeroes(int* nums, int numsSize)
     return;
 }
 
+void merge(int* nums1, int m, int* nums2, int n)
+{
+    if ((nums1 == NULL) || (nums2 == NULL)) {
+        return;
+    }
+
+
+    int index1 = 0;
+    int index2 = 0;
+
+    int merged = 1;    
+    while ((merged == 1) && ((index2) < n)) {
+        merged = 0;
+        for (int i = index1; i < m + index2; i++) {
+            /* right here */
+            if (nums1[i] > nums2[index2]) {
+                for (int j = m + index2; j > i; j--) {
+                    nums1[j] = nums1[j - 1];
+                }
+                
+                nums1[i] = nums2[index2++];
+                index1 = i + 1;
+                merged = 1;
+                break;
+            }
+        }
+    }
+
+    for (int i = index2; i < n; i++) {
+        nums1[m + i] = nums2[i];
+    }
+
+    return;
+}
+

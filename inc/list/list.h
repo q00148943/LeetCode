@@ -1,11 +1,7 @@
 #ifndef LIST_H
 #define LIST_H
 
-// clang does not support the bool type, so self-defined here
-#define true 1
-#define false 0
-
-typedef int bool;
+#include "typedef.h"
 
 struct ListNode {
     int val;

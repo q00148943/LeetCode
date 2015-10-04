@@ -1,6 +1,8 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
+#include "typedef.h"
+
 #define ALIGNMENT sizeof(unsigned int)
 #define align(d, a) (((d) + (a - 1)) & ~(a - 1))
 

@@ -17,5 +17,11 @@ void rotate(int* nums, int numsSize, int k);
 
 /* #66 Plus One */
 int* plusOne(int* digits, int digitsSize, int* returnSize);
+
+/* #118 Pascal's Triangle */
+int** generate(int numRows, int** columnSizes, int* returnSize);
+
+/* #283 Move Zeroes */
+void moveZeroes(int* nums, int numsSize);
 #endif /* ARRAY_H */
 

@@ -96,3 +96,32 @@ int* plusOne(int* digits, int digitsSize, int* returnSize)
     return sum;
 }
 
+int** generate(int numRows, int** columnSizes, int* returnSize)
+{
+    if (numRows <= 0) {
+        return NULL;
+    }
+
+    return NULL;
+}
+
+void moveZeroes(int* nums, int numsSize)
+{
+    if (nums == NULL) {
+        return;
+    }
+
+    int index = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] != 0) {
+            nums[index++] = nums[i];
+        }
+    }
+
+    for (; index < numsSize; index++) {
+        nums[index] = 0;
+    }
+
+    return;
+}
+

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "array.h"
 
@@ -52,11 +53,46 @@ void rotate(int* nums, int numsSize, int k)
 
     int rotate = k%numsSize;
 
-    for (int i = 0; i < rotate; i++) {
-        nums[i] = nums[numsSize - rotate + i];
+    for (int i = numsSize - rotate; i < numsSize; i++) {
+        
     }
 
-
     return;
+}
+
+int* plusOne(int* digits, int digitsSize, int* returnSize)
+{
+    if ((digits == NULL) || (digitsSize == 0)) {
+        *returnSize = 0;
+        return NULL;
+    }
+
+    int *sum = (int*)malloc(align((digitsSize + 1)*(sizeof(digits[0])), ALIGNMENT));
+    if (sum == NULL) {
+        *returnSize = 0;        
+        return NULL;
+    }
+
+    int index = 0;
+    int carry = 1;
+
+    for (int i = digitsSize - 1; i >= 0; i--) {
+        sum[index++] = (digits[i] + carry)%10;
+        carry = (digits[i] + carry)/10;
+    }
+
+    if (carry > 0) {
+        sum[index++] = carry;
+    }
+
+    int t;
+    for (int i = 0; i < index/2; i++) {
+        t = sum[i];
+        sum[i] = sum[index - 1 - i];
+        sum[index - 1 - i] = t;
+    }
+
+    *returnSize = index;
+    return sum;
 }
 

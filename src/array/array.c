@@ -180,21 +180,6 @@ int majorityElement(int* nums, int numsSize)
         }
     }
 
-    int value = nums[0];
-    int nelem = 1;
-    
-    for (int i = 1; i < numsSize; i++) {
-        if (nums[i] == value) {
-            if ((++nelem) > numsSize/2) {
-                return value;
-            }
-        }
-        else {
-            value = nums[i];
-            nelem = 1;
-        }
-    }
-
-    return value;
+    return nums[numsSize/2];
 }
 

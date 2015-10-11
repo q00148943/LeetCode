@@ -66,11 +66,12 @@ struct ListNode* mergeKLists(struct ListNode** lists, int listsSize);
 bool hasCycle(struct ListNode *head);
 
 /* 142    Linked List Cycle II */
-struct ListNode *detectCycle(struct ListNode *head);
+struct ListNode* detectCycle(struct ListNode *head);
 
 /* assistant function */
 void printList(struct ListNode* head);
 
-
+struct ListNode* insertList(int value, struct ListNode *listHead);
+void freeList(struct ListNode *listHead);
 #endif /* LIST_H */
 

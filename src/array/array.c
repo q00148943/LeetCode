@@ -1,12 +1,68 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+#include "list.h"
 #include "array.h"
 
 char** summaryRanges(int* nums, int numsSize, int* returnSize)
 {
+    if ((nums == NULL) || (numsSize == 0)) {
+        return NULL;
+    }
+
+    char  result[128];
+    char *p;
     
-    return NULL;
+    struct ListNode *listHead = NULL;
+
+    int num = 0;
+    int beginning = nums[0];
+
+    int i;
+    for (i = 0; i < numsSize - 1; i++) {
+        if (nums[i + 1] != (nums[i] + 1)) {
+            if (beginning != nums[i]) {
+                snprintf(result, 128, "%d->%d", beginning, nums[i]);
+            }
+            else {
+                snprintf(result, 128, "%d", beginning);
+            }
+
+            beginning = nums[i + 1];
+            p = (char*)malloc(strlen(result) + 1);
+            strcpy(p, result);
+            listHead = insertList((int)p, listHead);
+            num++;
+        }
+    }
+
+    if (beginning != nums[i]) {
+        snprintf(result, 128, "%d->%d", beginning, nums[i]);
+    }
+    else {
+        snprintf(result, 128, "%d", beginning);
+    }
+
+    p = (char*)malloc(strlen(result) + 1);
+    strcpy(p, result);
+    listHead = insertList((int)p, listHead);
+    num++;
+    
+    char **res = (char**)malloc(sizeof(char*)*num);
+
+    *returnSize = num;
+    num = 0;
+    
+    struct ListNode *node = listHead;
+    while (node != NULL) {
+        res[num++] = (char*)node->val;
+        node = node->next;
+    }
+
+    freeList(listHead);
+    
+    return res;
 }
 
 int removeDuplicates(int* nums, int numsSize)

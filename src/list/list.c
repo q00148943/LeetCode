@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "list.h"
 
@@ -777,4 +778,52 @@ struct ListNode *detectCycle(struct ListNode *head)
 
     return NULL;
 }
+
+struct ListNode* insertList(int value, struct ListNode *listHead)
+{
+    if (listHead == NULL)
+    {
+        if ((listHead = (struct ListNode*)malloc(sizeof(struct ListNode))) != NULL)
+        {
+            listHead->val = value;
+            listHead->next = NULL;
+
+            return listHead;
+        }
+
+        return NULL;
+    }
+
+    struct ListNode *node = listHead;
+    while (NULL != node->next)
+    {
+        node = node->next;
+    }
+
+    struct ListNode *temp = (struct ListNode*)malloc(sizeof(struct ListNode));
+    if (NULL == temp)
+    {
+        return listHead;
+    }
+
+    temp->val  = value;
+    temp->next = NULL;
+    node->next = temp;
+   
+    return listHead;
+}
+
+void freeList(struct ListNode *listHead)
+{
+    struct ListNode *temp;
+    
+    while (NULL != listHead)
+    {
+        temp = listHead;
+        listHead = listHead->next;
+        free(temp);
+    }
+
+    return;
+}    
 

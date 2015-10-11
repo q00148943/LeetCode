@@ -1,4 +1,4 @@
-CC = gcc
+CC = gcc -m32
 CFLAGS = -DDEBUG -W -Wall -Wpointer-arith -Wno-unused-parameter -Wunused-function -Wunused-variable -Wunused-value -Werror -g
 CPP =	gcc -E
 LINK =	$(CC)

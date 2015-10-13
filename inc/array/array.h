@@ -37,5 +37,8 @@ bool containsDuplicate(int* nums, int numsSize);
 
 /* #219 Contains Duplicate II*/
 bool containsNearbyDuplicate(int* nums, int numsSize, int k);
+
+/* #1 Two Sum*/
+int* twoSum(int* nums, int numsSize, int target);
 #endif /* ARRAY_H */
 

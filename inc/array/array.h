@@ -35,10 +35,14 @@ int majorityElement(int* nums, int numsSize);
 /* #217 Contains Duplicate */
 bool containsDuplicate(int* nums, int numsSize);
 
-/* #219 Contains Duplicate II*/
+/* #219 Contains Duplicate II */
 bool containsNearbyDuplicate(int* nums, int numsSize, int k);
 
-/* #1 Two Sum*/
+/* #1 Two Sum */
 int* twoSum(int* nums, int numsSize, int target);
+
+/* #28 Implement strStr() */
+int strStr(char* haystack, char* needle);
+
 #endif /* ARRAY_H */
 

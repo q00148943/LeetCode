@@ -289,3 +289,41 @@ int* twoSum(int* nums, int numsSize, int target)
     return NULL;
 }
 
+int strStr(char* haystack, char* needle)
+{
+    if ((haystack == NULL) || (needle == NULL)) {
+        return -1;
+    }
+
+    size_t nlen = strlen(needle);
+    size_t hlen = strlen(haystack);
+
+    if (nlen > hlen) {
+        return -1;
+    }
+
+    if ((*needle) == '\0') {
+        return 0;
+    }
+
+    unsigned int i = 0;
+    
+    char* n = needle;
+    char* h = haystack + (i++);
+
+    while ((*h) != '\0') {
+        if ((*h) == (*n)) {
+            n++;
+            h++;
+            if ((*n) == '\0') {
+                return h - haystack - nlen;
+            }
+        }
+        else {
+            n = needle;
+            h = haystack + (i++);
+        }
+    }
+
+    return -1;
+}
